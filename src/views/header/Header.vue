@@ -99,6 +99,7 @@ export default {
         font-size: 12px;
         color: #E6EEE6;
         margin-left: 18px;
+        margin-top: -6px;
         //background: bisque;
       }
     }
@@ -146,17 +147,17 @@ export default {
 
   .setting {
     width: 30px;
-    height: 100%;
+    height: 40px;
     //background: red;
     //margin-left: 10px;
     float: right;
-
+    display: flex;
+    /*实现垂直居中*/
+    align-items: center;
     img {
       width: 18px;
       height: 18px;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      background: red;
     }
   }
 

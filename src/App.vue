@@ -32,7 +32,21 @@
 </style>
 <script>
 import HeaderView from '@/views/header/Header'
+
 export default {
-  components: { HeaderView }
+  components: { HeaderView },
+
+  mounted() {
+    this.getMenu()
+  },
+
+  methods: {
+    getMenu () {
+      this.$http.get('./menu/menu.json').then((res) => {
+        console.log(res.data.version)
+        console.log(res)
+      })
+    }
+  }
 }
 </script>
