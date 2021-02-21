@@ -14,10 +14,12 @@
         <img src="../../assets/home.png">
         <router-link to=""><span>总览</span></router-link>
       </div>
-      <div class="all">
-        <img src="../../assets/menu.png">
-        <span>所有产品</span>
-      </div>
+      <menu-view>
+        <a class="all" href="#">
+          <img src="../../assets/menu.png">
+          <span>所有产品</span>
+        </a>
+      </menu-view>
     </div>
     <div class="login clearFixed">
       <div class="user">
@@ -29,7 +31,7 @@
       </div>
     </div>
     <div class="setting clearFixed">
-      <router-link to="/meun/setting">
+      <router-link to="/about">
         <img src="../../assets/setting.png"/>
       </router-link>
     </div>
@@ -38,8 +40,10 @@
 
 <script>
 
+import MenuView from "@/views/menu/View";
 export default {
-  name: 'header-view'
+  name: 'header-view',
+  components: {MenuView}
 }
 
 </script>
@@ -126,7 +130,7 @@ export default {
       }
     }
 
-    .all {
+    a {
       height: 40px;
       float: left;
       display: flex;
@@ -134,13 +138,20 @@ export default {
       align-items: center;
       margin-left: 8px;
       img {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
 
       span {
         margin-left: 3px;
         font-size: 12px;
+      }
+
+      &:hover {
+        img {
+          width: 15px;
+          height: 15px;
+        }
       }
     }
   }
@@ -157,7 +168,7 @@ export default {
     img {
       width: 18px;
       height: 18px;
-      background: red;
+      //background: red;
     }
   }
 
