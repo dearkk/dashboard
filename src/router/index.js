@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/meun/setting',
     name: 'MeunSetting',
-    component: () => import(/* webpackChunkName: "about" */ '../views/menu/Setting')
+    //component: () => import(/* webpackChunkName: "about" */ '../views/menu/MenuViewItem')
   }
 ]
 

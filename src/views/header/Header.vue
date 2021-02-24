@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="setting clearFixed">
-      <router-link to="/about">
+      <router-link to="/meun/setting">
         <img src="../../assets/setting.png"/>
       </router-link>
     </div>
@@ -40,7 +40,7 @@
 
 <script>
 
-import MenuView from "@/views/menu/View";
+import MenuView from "@/views/menu/MenuView";
 export default {
   name: 'header-view',
   components: {MenuView}
@@ -89,7 +89,7 @@ export default {
       position: relative;
       top: 50%;
       transform: translateY(-50%);
-      margin-left: -10px;
+     // margin-left: -10px;
       .a1 {
         display: block;
         font-size: 16px;
@@ -102,7 +102,7 @@ export default {
         -webkit-transform: scale(0.70);
         font-size: 12px;
         color: #E6EEE6;
-        margin-left: 18px;
+        margin-left: 2px;
         margin-top: -6px;
         //background: bisque;
       }

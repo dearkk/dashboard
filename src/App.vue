@@ -22,17 +22,17 @@
   }
 
   #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+    /*text-align: center;*/
+    /*color: #2c3e50;*/
   }
 
 </style>
 <script>
-import HeaderView from '@/views/header/Header'
-import menu from "@/menu";
+ import HeaderView from '@/views/header/Header.vue'
+// import menu from "@/menu";
 
 export default {
   components: { HeaderView },
@@ -47,7 +47,7 @@ export default {
       //   console.log(res.data.version)
       //   console.log(res)
       // })
-      console.log(menu)
+      //console.log(menu)
     }
   }
 }

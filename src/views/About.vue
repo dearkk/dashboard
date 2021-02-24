@@ -37,7 +37,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   .el-menu-vertical-demo {
     width: 160px;
     min-height: calc(100vh - 40px);
