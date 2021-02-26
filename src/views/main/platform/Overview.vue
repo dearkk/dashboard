@@ -1,17 +1,15 @@
 <template>
   <div>
-    Main page
+    platform-overview
   </div>
 </template>
+
+<script>
+export default {
+  name: 'overview-content'
+}
+</script>
 
 <style scoped>
 
 </style>
-
-<script>
-
-export default {
-  name: 'main-view',
-
-}
-</script>
