@@ -5,12 +5,33 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    menus:[],
+    routers:[],
+    menus:{},
+    module: 'login',
+    subModule: ''
   },
   mutations: {
-    setMenus(state, menus) {
-      state.menus = menus
-    }
+    setRouters(state, routers) {
+      state.routers = routers
+      for (let i=0, len=state.routers.length; i<len; i++) {
+        if (state.routers[i].name === state.module) {
+          state.menus = state.routers[i]
+          console.log("menus: ", state.menus)
+        }
+      }
+    },
+    setModule(state, object) {
+      state.module = object.module
+      state.subModule = object.sub
+      console.log("setModule: ", state.module)
+      console.log("subModule: ", state.subModule)
+      for (let i=0, len=state.routers.length; i<len; i++) {
+        if (state.routers[i].name === state.module) {
+          state.menus = state.routers[i]
+          console.log("menus: ", state.menus)
+        }
+      }
+    },
   },
   actions: {
   },

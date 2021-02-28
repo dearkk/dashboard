@@ -56,7 +56,7 @@
   }
 
   .el-icon-document:not(.el-icon){
-    background: url(../assets/setting.png) center no-repeat;
+    background: url(../assets/img/setting.png) center no-repeat;
   }
 
 </style>

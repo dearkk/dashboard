@@ -10,9 +10,14 @@ const routes = [
     redirect: "/platform",
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import("@/views/login/Login"),
+  },
+  {
     path:"/platform",
     name:"platform",
-    component: () => import("@/views/main/platform/Home"),
+    component: () => import("@/views/main/Home"),
     redirect: "/platform/overview",
     meta: {
       title:"平台管理",
@@ -21,7 +26,7 @@ const routes = [
     children: [
       {
         path:"overview",
-        name:"overview",
+        name:"platform-overview",
         component: () => import('@/views/main/platform/Overview'),
         meta: {
           title:"平台概述",
@@ -30,7 +35,8 @@ const routes = [
       },
       {
         path:"tenant",
-        name:"tenant",
+        name:"platform-tenant",
+        component: () => import('@/views/main/platform/Tenant'),
         meta: {
           title:"租户管理",
           icon:"el-icon-office-building",
@@ -38,7 +44,8 @@ const routes = [
       },
       {
         path:"member",
-        name:"member",
+        name:"platform-member",
+        component: () => import('@/views/main/platform/Member'),
         meta: {
           title:"成员管理",
           icon:"el-icon-user",
@@ -49,30 +56,33 @@ const routes = [
   {
     path:"/system",
     name:"system",
+    component: () => import("@/views/main/Home"),
+    redirect: "/system/user-center",
     meta: {
       title:"系统设置",
       icon:"el-icon-setting",
     },
     children: [
       {
-        path:"",
-        name:"name",
+        path:"user-center",
+        name:"user-center",
+        component: () => import('@/views/main/system/Content'),
         meta: {
           title:"账户中心",
           icon:"el-icon-user",
         },
         children:[
           {
-            path:"",
-            name:"name",
+            path:"user-list",
+            name:"user-list",
             meta: {
               title:"账户列表",
               icon:"el-icon-user",
             },
           },
           {
-            path:"",
-            name:"name",
+            path:"user-none",
+            name:"user-none",
             meta: {
               title:"黑名单",
               icon:"el-icon-user",
@@ -81,24 +91,24 @@ const routes = [
         ]
       },
       {
-        path:"",
-        name:"name",
+        path:"setting",
+        name:"setting",
         meta: {
           title:"微服务系统设置",
           icon:"el-icon-setting",
         },
         children:[
           {
-            path:"",
-            name:"name",
+            path:"setting-list",
+            name:"setting-list",
             meta: {
               title:"服务列表",
               icon:"el-icon-user",
             },
           },
           {
-            path:"",
-            name:"name",
+            path:"setting-app",
+            name:"setting-app",
             meta: {
               title:"应用列表",
               icon:"el-icon-user",
@@ -117,7 +127,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  router.app.$store.commit('setMenus', routes)
+  router.app.$store.commit('setRouters', routes)
   next();
 })
 export default router

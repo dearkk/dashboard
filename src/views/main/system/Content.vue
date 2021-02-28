@@ -1,12 +1,10 @@
 <template>
-  <div>
-    Overview
-  </div>
+ <span>aa</span>
 </template>
 
 <script>
 export default {
-  name: 'OverviewContent'
+name: "system-content"
 }
 </script>
 

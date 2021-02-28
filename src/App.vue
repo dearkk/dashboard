@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>
+    <div v-show="this.$store.state.module !== 'login'">
       <header-view id="header"></header-view>
     </div>
     <div>
@@ -29,25 +29,45 @@
     /*color: #2c3e50;*/
   }
 
+  .routerLink {
+    text-decoration: none;
+  }
+
 </style>
 <script>
  import HeaderView from '@/views/header/Header.vue'
-// import menu from "@/menu";
-
 export default {
   components: { HeaderView },
 
+  data() {
+    return {
+    }
+  },
+
+
   mounted() {
-    this.getMenu()
+
   },
 
   methods: {
-    getMenu () {
-      // this.$http.get('./menu/menu.json').then((res) => {
-      //   console.log(res.data.version)
-      //   console.log(res)
-      // })
-      //console.log(menu)
+  },
+
+  watch:{
+    $route:{
+      handler(val,oldval){
+        console.log("app watch router: " + val);//新路由信息
+        console.log("app watch router oldval: " + oldval);//老路由信息
+        let path = val.path.split('/')
+        if (path.length > 1) {
+          var subModel = "";
+          if (path.length > 2) {
+            subModel = path[path.length -1]
+          }
+          this.$store.commit('setModule', {module: path[1], sub: subModel})
+        }
+      },
+      // 深度观察监听
+      deep: true
     }
   }
 }

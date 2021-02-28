@@ -2,8 +2,8 @@
   <el-popover
       placement="bottom-start"
       trigger="hover">
-    <div v-for="(item, index) in menus" :key="index">
-      <MenuViewItem :menu-item="item"></MenuViewItem>
+    <div v-for="(item, index) in this.$store.state.routers" :key="index">
+      <MenuViewItem :menu-item=item></MenuViewItem>
 <!--      {{item}}-->
     </div>
     <slot slot="reference"></slot>
@@ -11,19 +11,16 @@
 </template>
 
 <script>
-import menuDir from '@/menu'
 import MenuViewItem from '@/views/menu/MenuViewItem'
 
 export default {
   name: "MenuView",
-  components: { MenuViewItem },
+  components: {MenuViewItem },
   data() {
     return {
-      menus: menuDir.menu
     };
   },
   mounted () {
-    console.log("menus len: " + this.menus.length)
   }
 }
 </script>

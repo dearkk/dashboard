@@ -1,17 +1,15 @@
 <template>
   <div>
-    Main page
+    Member
   </div>
 </template>
+
+<script>
+export default {
+name: "MemberContent"
+}
+</script>
 
 <style scoped>
 
 </style>
-
-<script>
-
-export default {
-  name: 'main-view',
-
-}
-</script>

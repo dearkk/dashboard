@@ -1,18 +1,20 @@
 <template>
-  <div class="main">
-    <div class="leve1">
-      <el-link :class="menuItem.meta.icon" :underline="false">
-        <span style="margin-left: 3px">{{menuItem.meta.title}}</span>
-      </el-link>
+  <div class="main" v-if="menuItem !== undefined">
+    <div class="leve1" v-if="menuItem.meta !== undefined">
+      <router-link :to="menuItem.path" class="routerLink">
+        <el-link :class="menuItem.meta.icon" :underline="false">
+          <span style="margin-left: 3px">{{menuItem.meta.title}}</span>
+        </el-link>
+      </router-link>
     </div>
-    <div class="leve2 clearFixed" v-if="menuItem.children.length > 0">
+    <div class="leve2 clearFixed" v-if="menuItem.children !== undefined && menuItem.children.length > 0">
       <ul>
         <li v-for="(item, index) in menuItem.children" :key="index">
           <div v-if="item.children !== undefined" >
-            <a class="a1 clearFixed" href="#" @mouseover="hover(index)" @mouseleave="leave()">
-              <div style="width: 80%">
+            <router-link class="a1" :to="{name: item.name}" @mouseover.native="hover(index)" @mouseleave.native="leave()">
+              <span style="width: 80%">
                 {{item.meta.title}}
-              </div>
+              </span>
               <div style="width: 20%;">
                 <i class="el-icon-arrow-right" style="float: right"></i>
               </div>
@@ -20,21 +22,16 @@
                 <ul class="clearFixed" style="list-style-type: none">
                   <li v-for="(item2, index2) in item.children" :key="index2">
                     <div style="padding-left: 10px; padding-top: 5px;">
-                      <a class="a2" @click="onClick(item2.meta.title)">{{item2.meta.title}}</a>
+                      <router-link class="a2 routerLink" :to="{name:item2.name}">{{item2.meta.title}}</router-link>
                     </div>
                   </li>
                 </ul>
               </div>
-            </a>
+            </router-link>
           </div>
-          <a class="a1" v-else href="#">
-            <div style="width: 80%">
-              {{item.meta.title}}
-            </div>
-<!--            <div style="width: 20%;">-->
-<!--              <i class="el-icon-arrow-right" style="float: right"></i>-->
-<!--            </div>-->
-          </a>
+          <router-link  v-else style="width: 80%" :to="{name:item.name}" class="routerLink a1">
+            {{item.meta.title}}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -52,20 +49,19 @@ export default {
       itemIndex:-1
     }
   },
-  mounted () {
-    console.log("menumItem:" + this.menuItem.meta.title)
-    console.log("menumItem length:" + this.menuItem.children.length)
-
-  },
   methods: {
     hover: function(index) {
       this.itemIndex = index
+      console.log("hover: ", index)
     },
     leave: function () {
       this.itemIndex = -1
     },
-    onClick: function (item) {
-      console.log(item)
+    onClick: function (path) {
+      console.log("onClick: ", path)
+      this.$router.push({path: path}).catch(err => {
+        console.log("onClick err: ", err)
+      })
     }
   }
 
@@ -97,9 +93,7 @@ export default {
     align-items: center;
     text-decoration: none;
     color: #404040;
-    i {
-      margin-right: 0px;
-    }
+    //
     &:hover {
       color: #4784d7;
     }

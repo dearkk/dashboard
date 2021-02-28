@@ -2,7 +2,7 @@
   <div class="header clearFixed">
     <div class="cloud clearFixed">
       <div class="icon">
-        <img src="../../assets/cloud.png">
+        <img src="../../assets/img/cloud.png">
       </div>
       <div class="text">
         <span class="a1">大豆云</span>
@@ -11,12 +11,12 @@
     </div>
     <div class="menu clearFixed">
       <div class="home">
-        <img src="../../assets/home.png">
+        <img src="../../assets/img/home.png">
         <router-link to=""><span>总览</span></router-link>
       </div>
       <menu-view>
         <a class="all" href="#">
-          <img src="../../assets/menu.png">
+          <img src="../../assets/img/menu.png">
           <span>所有产品</span>
         </a>
       </menu-view>
@@ -26,13 +26,18 @@
         <span>huangkun</span>
         <span>超级管理员</span>
       </div>
-      <div class="icon">
-        <img src="../../assets/arrow-down-bold.png">
-      </div>
+      <el-dropdown @command="handleCommand">
+        <span class="el-dropdown-link">
+          <i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="logout">退出登陆</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
     <div class="setting clearFixed">
       <router-link to="/meun/setting">
-        <img src="../../assets/setting.png"/>
+        <img src="../../assets/img/setting.png"/>
       </router-link>
     </div>
   </div>
@@ -43,7 +48,16 @@
 import MenuView from "@/views/menu/MenuView";
 export default {
   name: 'header-view',
-  components: {MenuView}
+  components: {MenuView},
+
+  methods: {
+    handleCommand(command) {
+      //this.$message('click on item ' + command);
+      if (command === 'logout') {
+        this.$router.push({name:'login'})
+      }
+    }
+  }
 }
 
 </script>
@@ -195,5 +209,15 @@ export default {
         height: 18px;
       }
     }
+  }
+
+  .el-dropdown-link {
+    cursor: pointer;
+    &:hover {
+      color: cornflowerblue;
+    }
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
   }
 </style>

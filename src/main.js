@@ -10,7 +10,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.prototype.$http = axios
 Vue.use(ElementUI);
 
-Vue.config.productionTip = false
+// const originalPush = router.prototype.push
+// router.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 
 new Vue({
   router,
