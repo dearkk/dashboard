@@ -8,7 +8,8 @@ export default new Vuex.Store({
     routers:[],
     menus:{},
     module: 'login',
-    subModule: ''
+    subModule: '',
+    token: '',
   },
   mutations: {
     setRouters(state, routers) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
         }
       }
     },
+    setToken(state, token) {
+      state.token = token
+    }
   },
   actions: {
   },

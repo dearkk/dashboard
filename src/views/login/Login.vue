@@ -19,7 +19,7 @@
 </template>
 
 <script>
-
+ import apple from "@/model/apple/apple.js"
 export default {
   name: "Login",
   data() {
@@ -29,7 +29,6 @@ export default {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
     }
   },
-
   methods: {
     login() {
       this.loading = this.$loading({
@@ -38,6 +37,11 @@ export default {
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.5)'
       });
+       apple.login("userid", "password").then(response=> {
+         console.log("response: " + response)
+       }).catch(error=>{
+         console.log("login error: " + error)
+       })
       setTimeout(() => {
         this.loading.close();
         this.$router.push({name:'platform'})
